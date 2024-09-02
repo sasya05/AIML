@@ -1,0 +1,195 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPLddFUGjAeUB365qsGr+nG",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/sasya05/AIML/blob/main/neural_network_1346\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "LFtKSjDkry3O",
+        "outputId": "a6c2a12b-f225-4bf2-842b-34ee8608f141"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "1.3\n"
+          ]
+        }
+      ],
+      "source": [
+        "input=[1,2,3]\n",
+        "weights=[0,0,0.1]\n",
+        "bais=1\n",
+        "output=input[0]*weights[0]+input[1]*weights[1]+input[2]*weights[2]+bais\n",
+        "print(output)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "input=[0,0.4,0.8,0.3,1]\n",
+        "weight1=[0.3,0.2,0.1,0.4]\n",
+        "weight2=[0.4,0.1,0.1,0.2]\n",
+        "weight3=[0.2,0.2,0.1,0.8]\n",
+        "bais1=0.5\n",
+        "bais2=0.3\n",
+        "bais3=0.6\n",
+        "output = [input[0]*weight1[0]+input[1]*weight1[1]+input[2]*weight1[2]+input[3]*weight1[3]+bais1,\n",
+        "         input[0]*weight1[0]+input[1]*weight1[1]+input[2]*weight1[2]+input[3]*weight1[3]+bais2,\n",
+        "         input[0]*weight1[0]+input[1]*weight1[1]+input[2]*weight1[2]+input[3]*weight1[3]+bais3]\n",
+        "print(output)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "nhHK48j1vm7e",
+        "outputId": "901dc88f-7ca9-4a7a-afc1-8fcbf39f9c52"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[0.78, 0.5800000000000001, 0.88]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "input=np.array([1,2,3,2.5])\n",
+        "weight=np.array([[0.3,0.2,0.1,0.4],[0.4,0.1,0.1,0.2],[0.2,0.2,0.1,0.8]])\n",
+        "bais=np.array([1,2,3])\n",
+        "output=np.dot(weight,input)+bais\n",
+        "print(output)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "pXW7-ZTg0u17",
+        "outputId": "1261d950-d5b7-44f4-bd80-945e13ce82a7"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[3.  3.4 5.9]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "def relu(x):\n",
+        "  return np.maximum(0,x)\n",
+        "  input=np.array([1,2,3,2.5])\n",
+        "  weight=np.array([[0.3,0.2,0.1,0.4],[0.4,0.1,0.1,0.2],[0.2,0.2,0.1,0.8]])\n",
+        "  bais=np.array([1,2,3])\n",
+        "output=np.dot(weight,input)+bais\n",
+        "output=relu(output)\n",
+        "print(output)\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NlsuZ-jT6wUr",
+        "outputId": "ad43ce4c-5b15-4f63-9249-1dfe19453f2c"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[3.  3.4 5.9]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "def sigmoid(x):\n",
+        "  return 1 / (1 + np.exp(-x))\n",
+        "\n",
+        "def relu(x):\n",
+        "  return np.maximum(0,x)\n",
+        "\n",
+        "inputs = np.array([0.4, 0.3, 1, 0.8])\n",
+        "weights = np.array([\n",
+        "    [0.3, 0.2, 0.1, 0.4],\n",
+        "    [0.4, 0.1, -0.1, 0.2],\n",
+        "    [0.2, -0.2, -0.1, 0.8]\n",
+        "])\n",
+        "biases = np.array([0.5, 0.3, 0.6])\n",
+        "\n",
+        "output = relu(np.dot(weights, inputs) + biases)\n",
+        "#Activation ReLU activation function\n",
+        "output1=relu(output)\n",
+        "print(output1)\n",
+        "output2=sigmoid(output)\n",
+        "print(output2)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "6bVDc3BBBPby",
+        "outputId": "8adcf367-4d33-4386-dda4-3ac8daa374aa"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[1.1  0.55 1.16]\n",
+            "[0.75026011 0.63413559 0.76133271]\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
